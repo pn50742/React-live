@@ -1,3 +1,5 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 const heading1 = React.createElement('h1', {className:'myhead'}, "namaste React!");
 const heading2 = React.createElement('h2', {className:'head2'}, "Learning React....");
 const div = React.createElement('div', {className:'mydiv'}, [heading1, heading2]);
