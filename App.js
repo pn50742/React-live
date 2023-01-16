@@ -1,8 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-const heading1 = React.createElement('h1', {className:'myhead'}, "namaste React!");
-const heading2 = React.createElement('h2', {className:'head2'}, "Learning React....");
-const div = React.createElement('div', {className:'mydiv'}, [heading1, heading2]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const Heading1 =()=> (<h1>hello react element</h1>);
 
-root.render(div);
+const HeadingComponent=()=>{
+return (
+    <div>
+        {Heading1()}
+        <h2>hello react compont</h2>
+        <p>react paragraph</p>
+    </div>
+);
+}
+
+root.render(<HeadingComponent />);  
