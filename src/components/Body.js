@@ -5,10 +5,11 @@ import SkeletonUI from './SkeletonUI'
 
 
 function filterData(searchText, resDta){
-   return resDta.filter((restrourent)=>restrourent.data.name.includes(searchText))
+   return resDta.filter((restrourent)=>restrourent?.data?.name.toLowerCase().includes(searchText.toLowerCase()))
 }
 const Body=()=>{
-    const [restourents, setRestourents] =useState([])
+    const [allRestorents, setAllRestorents] =useState([])
+    const [fillteredRestorents, setFillteredRestorents] =useState([])
     const [searchInput, setSearchInput]=useState("KFC");
     useEffect(()=>{
         loadRestrourentData();
@@ -17,7 +18,8 @@ const Body=()=>{
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.481971166465947&lng=77.32097737491131&page_type=DESKTOP_WEB_LISTING");
         const json = await data.json();
         console.log("kjkj",json);
-        setRestourents(json?.data?.cards[2]?.data?.data?.cards)
+        setAllRestorents(json?.data?.cards[2]?.data?.data?.cards)
+        setFillteredRestorents(json?.data?.cards[2]?.data?.data?.cards)
     }
 
     const searchInputHandler=(e)=>{
@@ -25,8 +27,8 @@ const Body=()=>{
 
     }
     const searchbtnHandler=()=>{
-        const data = filterData(searchInput, restourents);
-        setRestourents(data);
+        const data = filterData(searchInput, allRestorents);
+        setFillteredRestorents(data);
     }
     return <>
     <div className='main-body'>
@@ -35,8 +37,9 @@ const Body=()=>{
             <button className="search-btn" onClick={searchbtnHandler}>Search</button>
         </div>
         <div className='restrourent__list'>
-            {(restourents.length===0)?<SkeletonUI/>:
-              restourents.map((restList)=>{
+            {(allRestorents.length===0)?<SkeletonUI/>:
+            (fillteredRestorents.length===0)?<h1>no restrourent found</h1>:
+              fillteredRestorents.map((restList)=>{
                 return  <RestourentCart {...restList.data} kehy={restList.data.id}/>
               })
             }
