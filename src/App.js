@@ -4,6 +4,7 @@ import '../index.css'
 import Header from './components/Header';
 import Body from './components/Body';
 import Footer from './components/Footer';
+import { createBrowserHistory } from '@remix-run/router';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 {
@@ -34,5 +35,7 @@ const App =()=>{
     <Footer />
     </>)
 }
+
+
 
 root.render(<App />);  
