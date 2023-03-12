@@ -15,7 +15,7 @@ const Header=()=>{
         <li><a>home</a></li>
         <li><a>about</a></li>
         <li><a>contact</a></li>
-        <li><a>cart</a></li>
+        <li><a>cart</a> </li>
             </ul>
     </div>
     <div>{isLoggedin? 
