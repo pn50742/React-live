@@ -30,6 +30,7 @@ const Body=()=>{
         const data = filterData(searchInput, allRestorents);
         setFillteredRestorents(data);
     }
+    console.log("allRestorents", allRestorents)
     return <>
     <div className='main-body'>
         <div className="search__container">
